@@ -1,16 +1,13 @@
 require("player")
 
-function love:load()
-
+function love.load()
     Player:load()
 end
 
-function love:update(dt)
-
+function love.update(dt)
     Player:update(dt)
 end
 
-function love:draw()
+function love.draw()
     Player:draw()
-
 end
