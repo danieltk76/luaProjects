@@ -2,13 +2,14 @@ AI = {}
 
 
 function AI:load()
-    self.width = 20
-    self.height = 100
+    self.img = love.graphics.newImage("assets/realmex.png")
+    self.width = self.img:getWidth()
+    self.height = self.img:getHeight()
     self.x = love.graphics.getWidth() - self.width - 50
     self.y = love.graphics.getHeight() / 2
     self.yVel = 0
-    self.speed = 500
-    self.timer = 0
+    self.speed = 700
+    self.timer = 0.5
     self.rate = 0.5
 
 end
@@ -42,8 +43,16 @@ function AI:aquireTarget()
 end
 
 
+function Player:checkBoundaries()
+    if self.y < 0 then
+        self.y = 0
+    elseif self.y + self.height > love.graphics.getHeight() then
+        self.y = love.graphics.getHeight() - self.height
+    end
+end
+
 
 function AI:draw()
-    love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+    love.graphics.draw(self.img, self.x, self.y)
 
 end
